@@ -1,25 +1,31 @@
-pipeline{
-    agent {label 'ec2-agent'}
-        stages{
+pipeline {
+    agent { label 'ec2-agent' }
 
-          stage('Build')
-          {
-            steps{
-                echo 'Build'
+    tools {
+        git 'Git-Linux'
+        maven 'Maven-Linux'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
             }
-          }
-          stage('Test')
-          {
-            steps{
-                echo 'Test'
-            }
-          }
-          stage('Deploy')
-          {
-            steps{
-                echo 'Deploy'
-            }
-          }
         }
-    
+        stage('Build') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
 }
