@@ -12,19 +12,19 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build') {
+        stage('Build with Maven') {
             steps {
-                sh 'mvn clean compile'
+                sh 'mvn clean package'
             }
         }
-        stage('Test') {
+        stage('Build Docker Image') {
             steps {
-                sh 'mvn test'
+                sh 'docker build -t myapp:latest .'
             }
         }
-        stage('Package') {
+        stage('Run Container') {
             steps {
-                sh 'mvn package'
+                sh 'docker run --rm -p 8080:8080 myapp:latest'
             }
         }
     }
