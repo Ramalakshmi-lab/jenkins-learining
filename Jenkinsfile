@@ -1,12 +1,11 @@
 pipeline {
-    agent { label 'agent-2' }
+    agent any
 
     stages {
         stage('Build') {
             steps {
                 echo 'hi this is build'
-                sh 'git --version'
-                sh 'which git'
+               
             }
         }
 
