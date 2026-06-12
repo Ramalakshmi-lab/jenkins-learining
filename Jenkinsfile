@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         git 'Git-Linux'
-        maven 'Maven-3'
+        maven 'Maven-3'   // must match the name in Global Tool Config
     }
 
     stages {
