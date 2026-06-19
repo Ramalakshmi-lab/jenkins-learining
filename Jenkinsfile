@@ -5,11 +5,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Ramalakshmi-lab/jenkins-learining.git'
-            }
-        }
+       
         stage('Build') {
             steps {
                 sh 'mvn clean install'
