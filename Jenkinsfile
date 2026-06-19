@@ -5,8 +5,10 @@ pipeline {
     stages {
         stage('allow')
         {
+            steps{
             script{
                 input(message: 'shall we print?')
+            }
             }
         }
         stage('Build') {
