@@ -24,7 +24,7 @@ pipeline {
     }
     post{
         always{
-            deleteDir()
+            echo 'completed'
         }
     }
 }
