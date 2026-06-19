@@ -1,18 +1,18 @@
 pipeline {
-    agent {label 'agent-1' }
+    agent { label 'ec2-agent' }
     tools{
-
         maven 'Maven'
     }
+
     stages {
-        stage('First') {
+        stage('Checkout') {
             steps {
-                script {
-                    echo 'hi this is rambo'
-                }
-                steps{
-                    mvn install }
-                
+                git branch: 'main', url: 'https://github.com/Ramalakshmi-lab/jenkins-learining.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
             }
         }
     }
