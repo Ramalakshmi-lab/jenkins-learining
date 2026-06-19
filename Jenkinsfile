@@ -3,6 +3,12 @@ pipeline {
     agent {label 'agent-1'}
 
     stages {
+        stage('allow')
+        {
+            script{
+                input(message: 'shall we print?')
+            }
+        }
         stage('Build') {
             steps {
                 ansiColor('xterm') {
