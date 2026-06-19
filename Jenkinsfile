@@ -10,6 +10,9 @@ pipeline {
                 script {
                     echo 'hi this is rambo'
                 }
+                steps{
+                    mvn install }
+                
             }
         }
     }
