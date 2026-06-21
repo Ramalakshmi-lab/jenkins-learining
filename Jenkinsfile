@@ -1,7 +1,7 @@
 
 pipeline
 {
-    agent any
+    agent {label 'agent-2label'}
     stages{
         stage('First')
         {
