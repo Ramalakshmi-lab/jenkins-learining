@@ -1,31 +1,16 @@
 
-pipeline {
+pipeline
+{
     agent any
-
-    stages {
-        stage('allow')
+    stages{
+        stage('First')
         {
-            steps{
-            script{
-                input(message: 'shall we print?')
-            }
-            }
-        }
-        stage('Build') {
-            steps {
-                ansiColor('xterm') {
-                    sh '''
-                      echo -e "\\033[32mSUCCESS: Build completed!\\033[0m"
-                      echo -e "\\033[31mERROR: Something went wrong!\\033[0m"
-                    '''
-                }
+            steps
+            {
+                echo 'Nandu'
             }
         }
     }
-    post{
-        always{
-            echo 'completed'
-        }
-    }
+        
+    
 }
-
